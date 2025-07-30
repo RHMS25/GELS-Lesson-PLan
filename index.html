@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Georgia ELA Lesson Planner</title>
+</head>
+<body>
+<noscript>
+  <h2 style="color: red; text-align: center;">
+    This planner requires JavaScript. Please enable JavaScript in your browser.
+  </h2>
+</noscript>
+<div style="text-align:center; margin-top: 50px;">
+  <h1>Georgia Lesson Planner Loading...</h1>
+  <p>If you see this and nothing else, check browser console for errors or run locally using a web server.</p>
+</div>
+
+...(existing HTML unchanged)...
+
+<div id="generatedPlan" class="section hidden">
+    <button onclick="downloadPlan()">Download as Text</button>
+    <button onclick="downloadPDF()">Download as PDF</button>
+    <button onclick="emailPlan()">Email This Plan</button>
+    <pre id="planText" style="white-space: pre-wrap; margin-top: 20px;"></pre>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+...(existing JS functions)...
+
+function emailPlan() {
+    const subject = encodeURIComponent("My Lesson Plan");
+    const body = encodeURIComponent(document.getElementById('planText').textContent);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+}
+</script>
+
+</body>
+</html>
